@@ -25,4 +25,27 @@ zuul:
             path: /coffeeshop/**
             serviceId: gui
             stripPrefix: false
-        
+ 
+hystrix:
+    command:
+        creditrating:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 60000
+        location:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 60000
+        order:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 60000
+        gui:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 60000
+ 
