@@ -22,7 +22,7 @@ zuul:
             serviceId: order
             stripPrefix: false
         gui:
-            path: /**
+            path: /coffeeshop/**
             serviceId: gui
             stripPrefix: false
         
