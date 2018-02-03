@@ -1,0 +1,28 @@
+zuul:
+    ignoredServices: '*'
+    routes:
+        creditrating:
+            path: /coffeeshop/creditrating/**
+            serviceId: creditrating
+            stripPrefix: false
+        location:
+            path: /coffeeshop/nearest/**
+            serviceId: location
+            stripPrefix: false
+        order:
+            path: /coffeeshop/**/order
+            serviceId: order
+            stripPrefix: false
+        order_get:
+            path: /coffeeshop/**/order/**
+            serviceId: order
+            stripPrefix: false
+        order_menu:
+            path: /coffeeshop/menu/**
+            serviceId: order
+            stripPrefix: false
+        gui:
+            path: /**
+            serviceId: gui
+            stripPrefix: false
+        
