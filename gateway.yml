@@ -49,3 +49,31 @@ hystrix:
                     thread:
                         timeoutInMilliseconds: 60000
  
+creditrating:
+    ribbon:
+        ConnectTimeout: 60000
+        ReadTimeout: 60000
+        MaxTotalHttpConnections: 10
+        MaxConnectionsPerHost: 10
+
+location:
+    ribbon:
+        ConnectTimeout: 60000
+        ReadTimeout: 60000
+        MaxTotalHttpConnections: 10
+        MaxConnectionsPerHost: 10
+        
+order:
+    ribbon:
+        ConnectTimeout: 60000
+        ReadTimeout: 60000
+        MaxTotalHttpConnections: 10
+        MaxConnectionsPerHost: 10
+        
+gui:
+    ribbon:
+        ConnectTimeout: 60000
+        ReadTimeout: 60000
+        MaxTotalHttpConnections: 10
+        MaxConnectionsPerHost: 10
+ 
