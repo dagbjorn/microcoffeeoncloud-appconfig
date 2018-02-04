@@ -21,9 +21,9 @@ zuul:
             path: /coffeeshop/menu/**
             serviceId: order
             stripPrefix: false
-        gui:
+        web:
             path: /coffeeshop/**
-            serviceId: gui
+            serviceId: web
             stripPrefix: false
  
 creditrating:
@@ -47,7 +47,7 @@ order:
         MaxTotalHttpConnections: 10
         MaxConnectionsPerHost: 10
         
-gui:
+web:
     ribbon:
         ConnectTimeout: 60000
         ReadTimeout: 60000
