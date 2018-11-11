@@ -2,23 +2,23 @@ zuul:
     ignoredServices: '*'
     routes:
         creditrating:
-            path: /coffeeshop/creditrating/**
+            path: /app/coffeeshop/creditrating/**
             serviceId: creditrating
             stripPrefix: false
         location:
-            path: /coffeeshop/nearest/**
+            path: /app/coffeeshop/nearest/**
             serviceId: location
             stripPrefix: false
         order:
-            path: /coffeeshop/**/order
+            path: /app/coffeeshop/**/order
             serviceId: order
             stripPrefix: false
         order_get:
-            path: /coffeeshop/**/order/**
+            path: /app/coffeeshop/**/order/**
             serviceId: order
             stripPrefix: false
         order_menu:
-            path: /coffeeshop/menu/**
+            path: /app/coffeeshop/menu/**
             serviceId: order
             stripPrefix: false
  
