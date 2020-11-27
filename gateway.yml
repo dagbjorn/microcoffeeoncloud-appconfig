@@ -1,57 +1,54 @@
-zuul:
-    ignoredServices: '*'
-    routes:
-        creditrating:
-            path: /api/coffeeshop/creditrating/**
-            serviceId: creditrating
-            stripPrefix: false
-        location:
-            path: /api/coffeeshop/nearest/**
-            serviceId: location
-            stripPrefix: false
-        order:
-            path: /api/coffeeshop/**/order
-            serviceId: order
-            stripPrefix: false
-        order_get:
-            path: /api/coffeeshop/**/order/**
-            serviceId: order
-            stripPrefix: false
-        order_menu:
-            path: /api/coffeeshop/menu/**
-            serviceId: order
-            stripPrefix: false
-        creditrating_apidocs:
-            path: /apidocs/creditrating/**
-            serviceId: creditrating
-            stripPrefix: true
-        location_apidocs:
-            path: /apidocs/location/**
-            serviceId: location
-            stripPrefix: true
-        order_apidocs:
-            path: /apidocs/order/**
-            serviceId: order
-            stripPrefix: true
- 
-creditrating:
-    ribbon:
-        ConnectTimeout: 60000
-        ReadTimeout: 60000
-        MaxTotalHttpConnections: 10
-        MaxConnectionsPerHost: 10
-
-location:
-    ribbon:
-        ConnectTimeout: 60000
-        ReadTimeout: 60000
-        MaxTotalHttpConnections: 10
-        MaxConnectionsPerHost: 10
-        
-order:
-    ribbon:
-        ConnectTimeout: 60000
-        ReadTimeout: 60000
-        MaxTotalHttpConnections: 10
-        MaxConnectionsPerHost: 10
- 
+spring:
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      httpclient:
+        connect-timeout: 60000
+        response-timeout: 60s
+        wiretap: true # logging.level.reactor.netty.http.client: TRACE or DEBUG
+      httpserver:
+        wiretap: true # logging.level.reactor.netty.http.server: TRACE or DEBUG
+      routes:
+        - id: creditrating
+          uri: lb://creditrating
+          predicates:
+            - Path=/api/coffeeshop/creditrating/**
+        - id: location
+          uri: lb://location
+          predicates:
+            - Path=/api/coffeeshop/nearest/**
+        - id: order
+          uri: lb://order
+          predicates:
+            - Path=/api/coffeeshop/*/order
+        - id: order-get
+          uri: lb://order
+          predicates:
+            - Path=/api/coffeeshop/*/order/**
+        - id: order-menu
+          uri: lb://order
+          predicates:
+            - Path=/api/coffeeshop/menu/**
+        - id: creditrating-apidocs
+          uri: lb://creditrating
+          predicates:
+            - Path=/apidocs/creditrating/**
+          filters:
+            - StripPrefix=2
+        - id: location-apidocs
+          uri: lb://location
+          predicates:
+            - Path=/apidocs/location/**
+          filters:
+            - StripPrefix=2
+        - id: order-apidocs
+          uri: lb://order
+          predicates:
+            - Path=/apidocs/order/**
+          filters:
+            - StripPrefix=2
