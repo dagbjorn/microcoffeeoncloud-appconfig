@@ -50,5 +50,5 @@ spring:
           predicates:
             - Path=/apidocs/order/**
           filters:
-            - StripPrefix=2
-            - RewritePath=/v3/api-docs/[^/]+$\, /v3/api-docs
+            #- StripPrefix=2
+            - RewritePath=/apidocs/order/v3/api-docs/[^/]+$\, /v3/api-docs
