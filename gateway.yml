@@ -37,18 +37,18 @@ spring:
             - Path=/apidocs/creditrating/**
           filters:
             - StripPrefix=2
-            - RewritePath=/v3/api-docs/[^/]+$, /v3/api-docs
+            - RewritePath=/v3/api-docs/[^/]+$\, /v3/api-docs
         - id: location-apidocs
           uri: lb://location
           predicates:
             - Path=/apidocs/location/**
           filters:
             - StripPrefix=2
-            - RewritePath=/v3/api-docs/[^/]+$, /v3/api-docs
+            - RewritePath=/v3/api-docs/[^/]+$\, /v3/api-docs
         - id: order-apidocs
           uri: lb://order
           predicates:
             - Path=/apidocs/order/**
           filters:
             - StripPrefix=2
-            - RewritePath=/v3/api-docs/[^/]+$, /v3/api-docs
+            - RewritePath=/v3/api-docs/[^/]+$\, /v3/api-docs
