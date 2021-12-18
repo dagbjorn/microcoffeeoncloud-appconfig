@@ -51,4 +51,5 @@ spring:
             - Path=/apidocs/order/**
           filters:
             #- StripPrefix=2
-            - RewritePath=/apidocs/order/v3/api-docs/[^/]+$\, /v3/api-docs
+            #- RewritePath=/apidocs/order/v3/api-docs/[^/]+$\, /v3/api-docs
+            - SetPath=/v3/api-docs
