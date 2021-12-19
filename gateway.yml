@@ -48,9 +48,9 @@ spring:
         - id: order-apidocs
           uri: lb://order
           predicates:
-            - Path=/apidocs/order/**
-          #filters:
+            - Path=/v3/api-docs/**
+          filters:
             #- StripPrefix=2
             #- RewritePath=/apidocs/order/v3/api-docs/[^/]+$\, /v3/api-docs
             #- SetPath=/v3/api-docs
-            #- RewritePath=/apidocs/order/v3/api-docs/(?<segment>.*), /v3/api-docs
+            - RewritePath=/v3/api-docs/(?<path>.*), /v3/api-docs
