@@ -34,17 +34,17 @@ spring:
         - id: creditrating-apidocs
           uri: lb://creditrating
           predicates:
-            - Path=/apidocs/creditrating/**
+            - Path=/v3/api-docs/creditrating
           filters:
-            - StripPrefix=2
-            - RewritePath=/v3/api-docs/[^/]+$\, /v3/api-docs
+            #- StripPrefix=2
+            - RewritePath=/v3/api-docs/creditrating, /v3/api-docs
         - id: location-apidocs
           uri: lb://location
           predicates:
-            - Path=/apidocs/location/**
+            - Path=/v3/api-docs/location
           filters:
-            - StripPrefix=2
-            - RewritePath=/v3/api-docs/[^/]+$\, /v3/api-docs
+            #- StripPrefix=2
+            - RewritePath=/v3/api-docs/location, /swagger/location-apispec-3.0.yml
         - id: order-apidocs
           uri: lb://order
           predicates:
