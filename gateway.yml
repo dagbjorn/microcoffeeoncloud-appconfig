@@ -36,22 +36,16 @@ spring:
           predicates:
             - Path=/v3/api-docs/creditrating
           filters:
-            #- StripPrefix=2
             - RewritePath=/v3/api-docs/creditrating, /v3/api-docs
         - id: location-apidocs
           uri: lb://location
           predicates:
             - Path=/v3/api-docs/location
           filters:
-            #- StripPrefix=2
             - RewritePath=/v3/api-docs/location, /swagger/location-apispec-3.0.yml
         - id: order-apidocs
           uri: lb://order
           predicates:
             - Path=/v3/api-docs/order
           filters:
-            #- StripPrefix=2
-            #- RewritePath=/apidocs/order/v3/api-docs/[^/]+$\, /v3/api-docs
-            #- SetPath=/v3/api-docs
-            #- RewritePath=/v3/api-docs/(?<path>.*), /v3/api-docs
             - RewritePath=/v3/api-docs/order, /v3/api-docs
