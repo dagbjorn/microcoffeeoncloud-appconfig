@@ -43,9 +43,15 @@ spring:
             - Path=/v3/api-docs/location
           filters:
             - RewritePath=/v3/api-docs/location, /swagger/location-apispec-3.0.yml
+        - id: menu-apidocs
+          uri: lb://order
+          predicates:
+            - Path=/v3/api-docs/menu
+          #filters:
+          #  - RewritePath=/v3/api-docs/order, /v3/api-docs
         - id: order-apidocs
           uri: lb://order
           predicates:
             - Path=/v3/api-docs/order
-          filters:
-            - RewritePath=/v3/api-docs/order, /v3/api-docs
+          #filters:
+          #  - RewritePath=/v3/api-docs/order, /v3/api-docs
