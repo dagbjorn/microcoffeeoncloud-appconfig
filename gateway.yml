@@ -1,53 +1,55 @@
 spring:
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true
-      httpclient:
-        connect-timeout: 60000
-        response-timeout: 60s
-        wiretap: true # logging.level.reactor.netty.http.client: TRACE or DEBUG
-      httpserver:
-        wiretap: true # logging.level.reactor.netty.http.server: TRACE or DEBUG
-      routes:
-        - id: creditrating
-          uri: lb://creditrating
-          predicates:
-            - Path=/api/coffeeshop/creditrating/**
-        - id: location
-          uri: lb://location
-          predicates:
-            - Path=/api/coffeeshop/nearest/**
-        - id: order
-          uri: lb://order
-          predicates:
-            - Path=/api/coffeeshop/*/order
-        - id: order-get
-          uri: lb://order
-          predicates:
-            - Path=/api/coffeeshop/*/order/**
-        - id: order-menu
-          uri: lb://order
-          predicates:
-            - Path=/api/coffeeshop/menu/**
-        - id: creditrating-apidocs
-          uri: lb://creditrating
-          predicates:
-            - Path=/v3/api-docs/creditrating
-          filters:
-            - RewritePath=/v3/api-docs/creditrating, /v3/api-docs
-        - id: location-apidocs
-          uri: lb://location
-          predicates:
-            - Path=/v3/api-docs/location
-          filters:
-            - RewritePath=/v3/api-docs/location, /swagger/location-apispec-3.0.yml
-        - id: menu-apidocs
-          uri: lb://order
-          predicates:
-            - Path=/v3/api-docs/menu
-        - id: order-apidocs
-          uri: lb://order
-          predicates:
-            - Path=/v3/api-docs/order
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true
+          httpclient:
+            connect-timeout: 60000
+            response-timeout: 60s
+            wiretap: true # logging.level.reactor.netty.http.client: TRACE or DEBUG
+          httpserver:
+            wiretap: true # logging.level.reactor.netty.http.server: TRACE or DEBUG
+          routes:
+            - id: creditrating
+              uri: lb://creditrating
+              predicates:
+                - Path=/api/coffeeshop/creditrating/**
+            - id: location
+              uri: lb://location
+              predicates:
+                - Path=/api/coffeeshop/nearest/**
+            - id: order
+              uri: lb://order
+              predicates:
+                - Path=/api/coffeeshop/*/order
+            - id: order-get
+              uri: lb://order
+              predicates:
+                - Path=/api/coffeeshop/*/order/**
+            - id: order-menu
+              uri: lb://order
+              predicates:
+                - Path=/api/coffeeshop/menu/**
+            - id: creditrating-apidocs
+              uri: lb://creditrating
+              predicates:
+                - Path=/v3/api-docs/creditrating
+              filters:
+                - RewritePath=/v3/api-docs/creditrating, /v3/api-docs
+            - id: location-apidocs
+              uri: lb://location
+              predicates:
+                - Path=/v3/api-docs/location
+              filters:
+                - RewritePath=/v3/api-docs/location, /swagger/location-apispec-3.0.yml
+            - id: menu-apidocs
+              uri: lb://order
+              predicates:
+                - Path=/v3/api-docs/menu
+            - id: order-apidocs
+              uri: lb://order
+              predicates:
+                - Path=/v3/api-docs/order
