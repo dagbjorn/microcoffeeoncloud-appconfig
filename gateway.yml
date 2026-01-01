@@ -54,4 +54,4 @@ spring:
               predicates:
                 - Path=/v3/api-docs/order
           # Trust all proxies for forwarding (for now)
-          #trusted-proxies: "[\\s\\S]*"
+          trusted-proxies: "[\\s\\S]*"
