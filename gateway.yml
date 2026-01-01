@@ -53,3 +53,5 @@ spring:
               uri: lb://order
               predicates:
                 - Path=/v3/api-docs/order
+          # Trust all proxies for forwarding (for now)
+          trusted-proxies: "[\\s\\S]*"
